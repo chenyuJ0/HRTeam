@@ -23,16 +23,16 @@ public class ContractTest {
 
 	@Test
 	public void testFindAll() throws IOException {
-		InputStream in = Resources.getResourceAsStream("mybatis-config.xml");
-		SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(in);
-		SqlSession openSession = factory.openSession();
-		ContractDao dao = openSession.getMapper(ContractDao.class);
-		List<Contract> contracts = dao.findAll();
-		for(Contract c : contracts) {
-			System.out.println(c);
-		}
-		openSession.commit();
-		openSession.close();
-		in.close();
+//		InputStream in = Resources.getResourceAsStream("mybatis-config.xml");
+//		SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(in);
+//		SqlSession openSession = factory.openSession();
+//		ContractDao dao = openSession.getMapper(ContractDao.class);
+//		List<Contract> contracts = dao.findAll();
+//		for(Contract c : contracts) {
+//			System.out.println(c);
+//		}
+//		openSession.commit();
+//		openSession.close();
+//		in.close();
 	}
 }

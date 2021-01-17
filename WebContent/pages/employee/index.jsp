@@ -12,12 +12,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>员工管理</title>
-    <link rel="stylesheet" type="text/css" href="..public/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/public/css/style.css" />
     <!--[if lt IE 9]>
     <script src="public/js/html5.js"></script>
     <![endif]-->
-    <script src="..public/js/jquery.js"></script>
-    <script src="..public/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="${pageContext.request.contextPath }/public/js/jquery.js"></script>
+    <script src="${pageContext.request.contextPath }/public/js/jquery.mCustomScrollbar.concat.min.js"></script>
 </head>
 <body style="padding:20px">
    <table>

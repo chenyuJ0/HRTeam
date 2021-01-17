@@ -12,12 +12,12 @@
     <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
     <meta http-equiv="Cache-Control" content="no-siteapp" />
 
-    <link rel="shortcut icon" href="public/logo.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="public/css/font.css">
-	<link rel="stylesheet" href="public/css/xadmin.css">
+    <link rel="shortcut icon" href="${ctx}/public/logo.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="${ctx}/public/css/font.css">
+	<link rel="stylesheet" href="${ctx}/public/css/xadmin.css">
     <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-    <script src="public/lib/layui/layui.js" charset="utf-8"></script>
-    <script type="text/javascript" src="public/js/xadmin.js"></script>
+    <script src="${ctx}/public/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="${ctx}/public/js/xadmin.js"></script>
 
 </head>
 <body>
@@ -47,31 +47,81 @@
     <div class="left-nav">
       <div id="side-nav">
         <ul id="nav">
-            <li>
+        
+        	 <li>
                 <a href="javascript:;">
-                    <i class="iconfont">&#xe6b8;</i>
-                    <cite>用户管理</cite>
+                    <i class="iconfont">&#xe726;</i>
+                    <cite>员工管理</cite>
                     <i class="iconfont nav_right">&#xe697;</i>
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="test1">
+                        <a _href="${ctx }/employee/list">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>用户列表</cite>
-                            
+                            <cite>员工入职</cite>
+                        </a>
+                    </li >
+                    <li>
+                        <a _href="${ctx }/employee/add">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>员工信息</cite>
+                        </a>
+                    </li >
+                </ul>
+            </li>
+        
+            <li>
+                <a href="javascript:;">
+                    <i class="iconfont">&#xe6b8;</i>
+                    <cite>劳动关系</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a _href="t/test1">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>转正信息查询</cite>
+                        </a>
+                    </li >
+                    <li>
+                        <a _href="t/test2">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>离职信息查询</cite>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            
+            <li>
+                <a href="javascript:;">
+                    <i class="iconfont">&#xe6b8;</i>
+                    <cite>合同管理</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a _href="t/test1">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>未签订合同</cite>
                         </a>
                     </li >
                     <li>
                         <%-- <a _href="${ctx }/user/add"> --%>
-                        <a _href="test2">
+                        <a _href="t/test2">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>添加用户</cite>
-                            
+                            <cite>合同预警</cite>
                         </a>
                     </li>
-                   
+                    <li>
+                        <%-- <a _href="${ctx }/user/add"> --%>
+                        <a _href="t/test2">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>已签订合同</cite>
+                        </a>
+                    </li>
                 </ul>
             </li>
+            
             <li>
                 <a href="javascript:;">
                     <i class="iconfont">&#xe723;</i>
@@ -80,7 +130,7 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="test3">
+                        <a _href="t/test3">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>部门列表</cite>
                         </a>
@@ -93,6 +143,7 @@
                     </li >
                 </ul>
             </li>
+            
             <li>
                 <a href="javascript:;">
                     <i class="iconfont">&#xe723;</i>
@@ -114,28 +165,7 @@
                     </li >
                 </ul>
             </li>
-           
-            <li>
-                <a href="javascript:;">
-                    <i class="iconfont">&#xe726;</i>
-                    <cite>员工管理</cite>
-                    <i class="iconfont nav_right">&#xe697;</i>
-                </a>
-                <ul class="sub-menu">
-                    <li>
-                        <a _href="${ctx }/employee/list">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>员工列表</cite>
-                        </a>
-                    </li >
-                    <li>
-                        <a _href="${ctx }/employee/add">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>添加员工</cite>
-                        </a>
-                    </li >
-                </ul>
-            </li>
+            
             <li>
                 <a href="javascript:;">
                     <i class="iconfont">&#xe6ce;</i>
@@ -159,6 +189,7 @@
                    
                 </ul>
             </li>
+            
             <li>
                 <a href="javascript:;">
                     <i class="iconfont">&#xe6b4;</i>
@@ -180,6 +211,7 @@
                     </li>
                 </ul>
             </li>
+            
         </ul>
       </div>
     </div>
