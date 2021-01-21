@@ -5,12 +5,12 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>员工信息查看</title>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/public/css/style.css" />
     <!--[if lt IE 9]>
     <script src="js/html5.js"></script>
     <![endif]-->
-    <script src="${pageContext.request.contextPath }/js/jquery.js"></script>
-    <script src="${pageContext.request.contextPath }/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="${pageContext.request.contextPath }/public/js/jquery.js"></script>
+    <script src="${pageContext.request.contextPath }/pubiic/js/jquery.mCustomScrollbar.concat.min.js"></script>
 </head>
 <body style="padding:20px">
     <div class="page_title">

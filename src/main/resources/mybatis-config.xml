@@ -5,8 +5,13 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 <configuration>
   <properties resource="jdbc.properties"></properties>
 <typeAliases>
-	<package name="com.cn.qingruan.hr.domain"/>	
+	<package name="com.cn.hrsystem.domain"/>	
 </typeAliases>
+
+	<!-- 配置分页插件 -->
+	<plugins>
+		<plugin interceptor="com.github.pagehelper.PageInterceptor"></plugin>
+	</plugins>
 
 	<environments default="development">
 		<environment id="development">

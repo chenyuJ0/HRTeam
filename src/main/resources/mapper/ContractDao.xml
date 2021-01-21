@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cn.hrsystem.dao.ContractDao">
+	<select id="findAll"
+		resultType="com.cn.hrsystem.domain.Contract">
+		select * from contract
+	</select>
+	<resultMap type="com.cn.hrsystem.domain.Employee" id="find">
+		<id property="id" column="id"/>
+		<result property="jobnum" column="jobnum" />
+		<result property="empname" column="empname" />
+		<result property="changetype" column="changetype" />
+		<result property="hiredate" column="hiredate" />
+		<result property="changedate" column="changedate" />
+		<!-- -->
+		<result property="leavedate" column="leavedate" />
+		<result property="leavetype" column="leavetype" />
+		<result property="leavereason" column="leavereason" />
+		<result property="leavecomment" column="leavecomment" />
+		<!-- -->
+		<association property="dept"
+			javaType="com.cn.hrsystem.domain.Dept">
+			<result property="deptname" column="deptname" />
+		</association>
+		<association property="job"
+			javaType="com.cn.hrsystem.domain.Job">
+			<result property="jobname" column="jobname" />
+		</association>
+		<association property="user"
+			javaType="com.cn.hrsystem.domain.User">
+			<result property="name" column="name" />
+		</association>
+		<association property="contract" javaType="com.cn.hrsystem.domain.Contract">
+			<result property="contract_date" column="contract_date"/>
+			<result property="start_date" column="start_date"/>
+			<result property="end_date" column="end_date"/>
+			<result property="comment" column="comment"/>
+		</association>
+		<!-- -->
+		<!-- <collection property="contracts"
+			ofType="com.cn.hrsystem.domain.Contract">
+			<result property="contract_date" column="contract_date" />
+			<result property="start_date" column="start_date" />
+			<result property="end_date" column="end_date" />
+			<result property="comment" column="comment" />
+		</collection> -->
+	</resultMap>
+
+
+	<!-- 查找转正信息 -->
+	<select id="findChange"
+		resultType="com.cn.hrsystem.domain.Employee" resultMap="find" parameterType="com.cn.hrsystem.domain.Employee">
+		SELECT
+		e.jobnum,e.empname,d.deptname,j.jobname,e.changetype,e.hiredate,e.changedate,u.name
+		FROM employee e
+		LEFT JOIN dept d
+		ON e.dept_id=d.id
+		LEFT JOIN job j
+		ON
+		e.job_id=j.id
+		LEFT JOIN USER u
+		ON e.changerecorder=u.id
+		<where>
+			(e.deletestatus != 1 OR e.deletestatus IS NULL) AND (e.changetype IS NOT NULL AND e.changetype IN (0,1,2))
+			<if test="empname != null and empname !='' ">
+				and e.empname like concat('%',#{empname},'%')
+			</if>
+			<if test="dept_id != 0 and dept_id !=''">
+				and e.dept_id = #{dept_id}
+			</if>
+			<if test="changetype != 0 and changetype !=''">
+				and e.changetype = (#{changetype}-1)
+			</if>
+		</where>
+		<!-- (e.deletestatus != 1 OR e.deletestatus IS NULL) AND (e.changetype IS
+		NOT NULL AND e.changetype IN (0,1,2)) -->
+		
+	</select>
+
+	<!-- 查找离职信息 -->
+	<select id="findDis"
+		resultType="com.cn.hrsystem.domain.Employee" resultMap="find">
+		SELECT
+		e.jobnum,e.empname,d.deptname,j.jobname,e.leavedate,e.leavetype,e.leavereason,e.leavecomment
+		FROM employee e
+		LEFT JOIN dept d
+		ON e.dept_id=d.id
+		LEFT JOIN job j
+		ON
+		e.job_id=j.id
+		<where>
+			(e.deletestatus != 1 OR e.deletestatus IS NULL) AND
+			e.work_status=1
+			<if test="empname != null and empname !='' ">
+				and e.empname like concat('%',#{empname},'%')
+			</if>
+			<if test="dept_id != 0 and dept_id !=''">
+				and e.dept_id = #{dept_id}
+			</if>
+			<if test="leavetype != 0 and leavetype !=''">
+				and e.leavetype = (#{leavetype}-1)
+			</if>
+		</where>
+	<!-- 	WHERE (e.deletestatus != 1 OR e.deletestatus IS NULL) AND
+		e.work_status=1 -->
+	</select>
+		
+		
+		<!-- 查找合同信息 -->
+		<resultMap type="com.cn.hrsystem.domain.Employee" id="findCon">
+		<id property="id" column="id"/>
+		<result property="jobnum" column="jobnum" />
+		<result property="empname" column="empname" />
+		<result property="changetype" column="changetype" />
+		<result property="hiredate" column="hiredate" />
+		<result property="changedate" column="changedate" />
+		<!-- -->
+		<result property="leavedate" column="leavedate" />
+		<result property="leavetype" column="leavetype" />
+		<result property="leavereason" column="leavereason" />
+		<result property="leavecomment" column="leavecomment" />
+		<!-- -->
+		<association property="dept"
+			javaType="com.cn.hrsystem.domain.Dept">
+			<result property="deptname" column="deptname" />
+		</association>
+		<association property="job"
+			javaType="com.cn.hrsystem.domain.Job">
+			<result property="jobname" column="jobname" />
+		</association>
+		<association property="user"
+			javaType="com.cn.hrsystem.domain.User">
+			<result property="name" column="name" />
+		</association>
+		<collection property="contracts"
+			ofType="com.cn.hrsystem.domain.Contract">
+			<result property="contract_date" column="contract_date" />
+			<result property="start_date" column="start_date" />
+			<result property="end_date" column="end_date" />
+			<result property="comment" column="comment" />
+		</collection>
+	</resultMap>
+
+	<!-- 查找合同信息 -->
+	<select id="findAllCons"
+		resultType="com.cn.hrsystem.domain.Employee" resultMap="findCon">
+		SELECT e.id,e.jobnum,e.empname,d.deptname,j.jobname,e.`work_status`,c.contract_date,c.start_date,c.end_date,c.comment
+		FROM contract c
+		LEFT JOIN employee e
+		ON c.emp_id = e.id
+		LEFT JOIN dept d
+		ON e.dept_id=d.id
+		LEFT JOIN job j
+		ON e.job_id=j.id
+		<where>
+			(e.deletestatus != 1 OR e.deletestatus IS NULL)
+			<if test="empname != null and empname !='' ">
+				and e.empname like concat('%',#{empname},'%')
+			</if>
+			<if test="dept_id != 0 and dept_id !=''">
+				and e.dept_id = #{dept_id}
+			</if>
+		</where>
+		ORDER BY e.jobnum	
+	</select>
+
+	<!-- 根据id查找合同 -->
+	<select id="findContractById">
+		select
+	</select>
+
+
+	<!-- 根据id删除合同 -->
+	<delete id="deleteContract">
+		delete from contract where id=#{id}
+	</delete>
+
+	<!-- 合同预警的映射 -->
+	<resultMap type="com.cn.hrsystem.domain.Contract" id="cw">
+		<result property="start_date" column="start_date" />
+		<result property="end_date" column="end_date" />
+		<result property="emp_id" column="emp_id" />
+		<!-- 用i主键字段保存合同剩余天数 -->
+		<result property="id" column="leavedays" />
+		<association property="emp" javaType="com.cn.hrsystem.domain.Employee">
+		
+			<result property="jobnum" column="jobnum" />
+			<result property="empname" column="empname" />
+
+			<association property="dept"
+				javaType="com.cn.hrsystem.domain.Dept">
+				<result property="deptname" column="deptname" />
+			</association>
+
+			<association property="job"
+				javaType="com.cn.hrsystem.domain.Job">
+				<result property="jobname" column="jobname" />
+			</association>
+			
+		</association>
+	</resultMap>
+
+	<!-- 合同预警 -->
+	<select id="findContractWarning"
+		resultType="com.cn.hrsystem.domain.Contract" resultMap="cw">
+		SELECT c.emp_id,e.jobnum,e.empname,d.deptname,j.jobname,c.start_date,c.end_date,DATEDIFF(c.end_date,NOW()) AS leavedays
+		FROM contract c
+		LEFT JOIN employee e
+		ON c.emp_id = e.id
+		LEFT JOIN dept d
+		ON e.dept_id=d.id
+		LEFT JOIN job j
+		ON e.job_id=j.id
+		<where>
+			(e.deletestatus != 1 OR e.deletestatus IS NULL) AND (c.end_date - NOW() &lt; 30 AND c.end_date - NOW() &rt; 0)
+			<if test="empname != null and empname !='' ">
+				and e.empname like concat('%',#{empname},'%')
+			</if>
+			<if test="dept_id != 0 and dept_id !=''">
+				and e.dept_id = #{dept_id}
+			</if>
+		</where>
+		order by emp_id
+		<!-- WHERE (e.deletestatus != 1 OR e.deletestatus IS NULL) AND c.end_date - NOW() &lt; 30
+		order by emp_id -->
+	</select>
+	
+	<select id="findUnsigendEmps" resultType="com.cn.hrsystem.domain.Contract" resultMap="find">
+		SELECT e.id,e.jobnum,e.empname,d.deptname,j.jobname,e.hiredate,e.changedate
+		FROM employee e
+		LEFT JOIN contract c
+		ON e.id = c.emp_id
+		LEFT JOIN dept d
+		ON e.dept_id=d.id
+		LEFT JOIN job j
+		ON e.job_id=j.id
+		<where>
+			(e.deletestatus != 1 OR e.deletestatus IS NULL) AND c.emp_id IS NULL
+			<if test="empname != null and empname !='' ">
+				and e.empname like concat('%',#{empname},'%')
+			</if>
+			<if test="dept_id != 0 and dept_id !=''">
+				and e.dept_id = #{dept_id}
+			</if>
+		</where>
+	</select>
+	
+	<!-- 根据员工id查找员工和合同的信息 -->
+	<select id="findEmpAndConByEmpId" resultType="com.cn.hrsystem.domain.Employee" resultMap="find">
+		SELECT e.id,e.jobnum,e.empname,d.deptname,j.jobname,c.contract_date,c.start_date,c.end_date
+		FROM employee e
+		LEFT JOIN contract c
+		ON e.id=c.emp_id
+		LEFT JOIN dept d
+		ON e.dept_id=d.id
+		LEFT JOIN job j
+		ON e.job_id=j.id
+		WHERE (e.deletestatus != 1 OR e.deletestatus IS NULL) AND e.id=#{empID}
+		GROUP BY jobnum,c.contract_date DESC
+		LIMIT 1
+	</select>
+	
+	
+	
+	<!-- 添加合同 -->
+	<insert id="addContract" parameterType="com.cn.hrsystem.domain.Contract" >
+		insert into contract values(null,#{contract_date},#{start_date},#{end_date},#{comment},#{emp_id})
+	</insert>
+	
+</mapper>

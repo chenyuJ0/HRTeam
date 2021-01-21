@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
 <!doctype html>
 <html lang="en">
@@ -78,13 +79,13 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="t/test1">
+                        <a _href="con/findChange">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>转正信息查询</cite>
                         </a>
                     </li >
                     <li>
-                        <a _href="t/test2">
+                        <a _href="con/findDis">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>离职信息查询</cite>
                         </a>
@@ -100,21 +101,19 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="t/test1">
+                        <a _href="con/findUsC">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>未签订合同</cite>
                         </a>
                     </li >
                     <li>
-                        <%-- <a _href="${ctx }/user/add"> --%>
-                        <a _href="t/test2">
+                        <a _href="con/findCW">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>合同预警</cite>
                         </a>
                     </li>
                     <li>
-                        <%-- <a _href="${ctx }/user/add"> --%>
-                        <a _href="t/test2">
+                        <a _href="con/findAllCons">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>已签订合同</cite>
                         </a>
@@ -122,27 +121,28 @@
                 </ul>
             </li>
             
-            <li>
-                <a href="javascript:;">
+             <li>
+                 <a href="javascript:;">
                     <i class="iconfont">&#xe723;</i>
                     <cite>部门管理</cite>
                     <i class="iconfont nav_right">&#xe697;</i>
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="t/test3">
+                        <a _href="dept/findAll?id=${user.id }">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>部门列表</cite>
                         </a>
-                    </li >
+                    </li>
                     <li>
-                        <a _href="${ctx }/dept/add">
+                        <a _href="${ctx }/pages/dept/add.jsp?id=${user.id }">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>添加部门</cite>
                         </a>
-                    </li >
+                    </li>
                 </ul>
             </li>
+            
             
             <li>
                 <a href="javascript:;">
@@ -152,19 +152,21 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="${ctx }/job/list">
+                        <a _href="${ctx }/job/findAll">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>职位列表</cite>
                         </a>
-                    </li >
+                    </li>
                      <li>
-                        <a _href="${ctx }/job/add">
+                        <a _href="${ctx }/pages/job/add.jsp?">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>添加职位</cite>
                         </a>
-                    </li >
+                    </li>
                 </ul>
             </li>
+            
+            
             
             <li>
                 <a href="javascript:;">

@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <title>HR人力资源管理系统</title>
     <meta name="author" content="DeathGhost" />
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/public/css/style.css" />
     <style>
         body {
             height: 100%;
@@ -19,9 +19,9 @@
             position: absolute;
         }
     </style>
-    <script src="${pageContext.request.contextPath }/js/jquery.js"></script>
-    <script src="${pageContext.request.contextPath }/js/verificationNumbers.js"></script>
-    <script src="${pageContext.request.contextPath }/js/Particleground.js"></script>
+    <script src="${pageContext.request.contextPath }/public/js/jquery.js"></script>
+    <script src="${pageContext.request.contextPath }/public/js/verificationNumbers.js"></script>
+    <script src="${pageContext.request.contextPath }/public/js/Particleground.js"></script>
     <script>
         $(document).ready(function () {
             //粒子背景特效
