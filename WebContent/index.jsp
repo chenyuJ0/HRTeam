@@ -49,7 +49,7 @@
       <div id="side-nav">
         <ul id="nav">
         
-        	 <li>
+        	<li>
                 <a href="javascript:;">
                     <i class="iconfont">&#xe726;</i>
                     <cite>员工管理</cite>
@@ -57,13 +57,13 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="${ctx }/employee/list">
+                        <a href="${ctx }/pages/employee/add.jsp">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>员工入职</cite>
                         </a>
                     </li >
                     <li>
-                        <a _href="${ctx }/employee/add">
+                        <a href="${ctx }/emp/findAllEmps">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>员工信息</cite>
                         </a>
@@ -122,27 +122,26 @@
             </li>
             
              <li>
-                 <a href="javascript:;">
+                <a href="javascript:;">
                     <i class="iconfont">&#xe723;</i>
                     <cite>部门管理</cite>
                     <i class="iconfont nav_right">&#xe697;</i>
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="dept/findAll?id=${user.id }">
+                        <a _href="${ctx }/dept/findAll">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>部门列表</cite>
                         </a>
-                    </li>
+                    </li >
                     <li>
-                        <a _href="${ctx }/pages/dept/add.jsp?id=${user.id }">
+                        <a _href="${ctx }/dept/add">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>添加部门</cite>
                         </a>
-                    </li>
+                    </li >
                 </ul>
             </li>
-            
             
             <li>
                 <a href="javascript:;">
@@ -156,19 +155,19 @@
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>职位列表</cite>
                         </a>
-                    </li>
+                    </li >
                      <li>
-                        <a _href="${ctx }/pages/job/add.jsp?">
+                        <a _href="${ctx }/job/add">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>添加职位</cite>
                         </a>
-                    </li>
+                    </li >
                 </ul>
             </li>
             
             
             
-            <li>
+                        <li>
                 <a href="javascript:;">
                     <i class="iconfont">&#xe6ce;</i>
                     <cite>公告管理</cite>
@@ -176,7 +175,7 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="${ctx }/notice/list">
+                        <a _href="${ctx }/notice/findAll">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>公告查询</cite>
                         </a>
@@ -187,8 +186,6 @@
                             <cite>添加公告</cite>
                         </a>
                     </li >
-                   
-                   
                 </ul>
             </li>
             
@@ -200,15 +197,15 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="${ctx }/document/list">
+                        <a _href="${ctx }/doc/showAll">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>文档查询</cite>
+                            <cite>文件查询</cite>
                         </a>
                     </li>
                     <li>
-                        <a _href="${ctx }/document/add">
+                        <a _href="${ctx }/doc/add">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>上传文档</cite>
+                            <cite>上传文件</cite>
                         </a>
                     </li>
                 </ul>
@@ -237,7 +234,7 @@
     <!-- 中部结束 -->
     <!-- 底部开始 -->
     <div class="footer">
-        <div class="copyright">Copyright ©2017 x-admin v2.3 All Rights Reserved</div>  
+        <div class="copyright">Copyright ©2021 HuBeiEducationOfUniversity v12 All Rights Reserved</div>  
     </div>
     <!-- 底部结束 -->
  

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cn.hrsystem.dao.DocumentDao">
+	<!-- //添加文件
+	public void addDocument(Document document);
+	
+	//根据文件id删除文件
+	public void deleteDocumentById(Integer id);
+	
+	//更新文件
+	public void updateDocument(Document document);
+	
+	//查找文件。
+	public List<Document> findAllDocuments(Document document);
+
+	//根据文件id查找文件
+	public Document findDocumentById(Integer id);
+	
+	//查询总文件数
+	public int findDocumentCounts(); -->
+	
+	<!-- 添加文件 -->
+	<insert id="addDocument" parameterType="com.cn.hrsystem.domain.Document">
+		insert into document values(null,#{filename},#{remark},#{create_date},#{description},#{user_id})
+	</insert>
+	
+	<!-- 根据文件id删除文件 -->
+	<delete id="deleteDocumentById">
+		delete from document where id = #{id}
+	</delete>
+	
+	<!-- 根据文件id更新文件 -->
+	<update id="updateDocument" parameterType="com.cn.hrsystem.domain.Document">
+		update document
+		<set>
+			<if test="id != null">
+				id = #{id},
+			</if>
+			<if test="create_date != null">
+				create_date = #{create_date},
+			</if>
+			<if test="description !=null or description != ''">
+				description=#{description}
+			</if>
+		</set>
+		<where>
+			id=#{id}
+		</where>
+	</update>
+	
+	<!-- 查找所有文件 -->
+	<select id="findAllDocuments" parameterType="com.cn.hrsystem.domain.Document" resultType="com.cn.hrsystem.domain.Document">
+		select d.*,u.name 
+		from document d
+		left join user u
+		on d.user_id = u.id
+		<where>
+			<if test="filename != null and filename != ''">
+				and d.filename like concat('%',#{filename},'%')
+			</if>
+			<if test="description != null and description != ''">
+				and d.description like concat('%',#{description},'%')
+			</if>
+		</where>
+	</select>
+	
+	<!-- findDocumentById根据id查找文件 -->
+	<select id="findDocumentById" resultType="com.cn.hrsystem.domain.Document">
+		select d.*,u.name 
+		from document d
+		left join user u
+		on d.user_id = u.id
+		where d.id=#{id}
+	</select>
+	
+	<!-- 查询总文件数-->
+	<select id="findDocumentCounts" resultType="int">
+		select count(*)
+		from document
+	</select>
+</mapper>

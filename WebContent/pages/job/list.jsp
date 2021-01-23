@@ -8,7 +8,7 @@
   
   <head>
     <meta charset="UTF-8">
-    <title>欢迎页面-X-admin2.0</title>
+    <title>职业信息</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
@@ -31,7 +31,7 @@
   <body>
     <div class="x-nav">
       <span class="layui-breadcrumb">
-        <a href="${ctx}">首页</a>
+        <%-- <a href="${ctx}">首页</a> --%>
       </span>
       																									<!-- javascript:location.replace(location.href); -->
       <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="${ctx}/job/findAll" title="刷新">
@@ -44,14 +44,14 @@
         <form class="layui-form layui-col-md12 x-so" method="post" action="${ctx }/job/moHuSearch">
         <table>
         <tr style="height:50px">
-            <td style="text-align:right;width: 120px " ><span class="item_name"wit>职位描述：</span></td>
-           			 <td><input type="text" class="textbox textbox_225" style="width: 120px;height:30px" name="des" /></td>
+            <td style="text-align:right;width: 120px " ><span class="item_name">职位描述：</span></td>
+           			 <td><input type="text" class="textbox textbox_225" style="width: 120px;height:30px" name="des" value="${job1.des }" /></td>
             <td style="width: 120px; text-align: right"><span class="item_name">部门：</span></td>
             <td>
                 <select class="select" name="dept_id">
                     <option value="">全部</option>
                     <c:forEach items="${requestScope.list2}" var="dept" varStatus="stat">
-                   		 <option value="${dept.id }">${dept.deptname }</option>
+                   		 <option value="${dept.id }"  <c:if test="${dept.id eq job1.dept_id}">selected="selected"</c:if>  >${dept.deptname }</option>
                     </c:forEach>
                     
                 </select>
@@ -61,7 +61,7 @@
                 <select class="select" name="jobname">
                     <option value="">全部</option>
                     <c:forEach items="${requestScope.list3}" var="job" varStatus="stat">
-                   		 <option value="${job.jobname }">${job.jobname }</option>
+                   		 <option value="${job.jobname }" <c:if test="${job1.jobname eq job.jobname }">selected="selected"</c:if> >${job.jobname }</option>
                     </c:forEach>
                 </select>
             </td>
@@ -104,8 +104,9 @@
             <td>${job.jobno }</td>
             <td>${job.jobname }</td>
             <td>${job.des }</td>
-             <td>${job.depts[0].deptname }</td> 
-            
+            <%--  <td>${job.depts[0].deptname }</td> --%> 
+            <c:if test="${ not empty job.depts[0].deptname}"><td>${job.depts[0].deptname }</td></c:if>
+            <c:if test="${ empty job.depts[0].deptname}"><td>暂无</td></c:if>
             
            
             <td class="td-manage">
@@ -126,8 +127,8 @@
       </table>
       
       
-      <div class="page">
-      
+      <!--  <div class="page">  -->
+      <div align="center">
       
        		<div>
 			<nav aria-label="Page navigation">
@@ -138,7 +139,7 @@
 
 					<c:if test="${info.pageNum ne 1 }">
 						<li><a
-							href="${pageContext.request.contextPath }/job/findAll?pn=${info.pageNum -1 }"
+							href="${pageContext.request.contextPath }/job/moHuSearch?pn=${info.pageNum -1 }&des=${job1.des}&job=${job1.dept_id}&jobname=${job1.jobname}"
 							aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
 						</a></li>
 					</c:if>
@@ -152,7 +153,7 @@
 
 						<c:if test="${info.pageNum ne i }">
 							<li><a
-								href="${pageContext.request.contextPath }/job/findAll?pn=${i}">${i}</a>
+								href="${pageContext.request.contextPath }/job/moHuSearch?pn=${i}&des=${job1.des}&job=${job1.dept_id}&jobname=${job1.jobname}">${i}</a>
 							</li>
 						</c:if>
 					</c:forEach>
@@ -166,14 +167,14 @@
 					<c:if
 						test="${info.pageNum+1 <= info.pages }">
 						<li><a
-							href="${pageContext.request.contextPath }/job/findAll?pn=${info.pageNum + 1}"
+							href="${pageContext.request.contextPath }/job/moHuSearch?pn=${info.pageNum + 1}&des=${job1.des}&dept_id=${job1.dept_id}&jobname=${job1.jobname}"
 							aria-label="Previous"> <span aria-hidden="true">&raquo;</span>
 						</a></li>
 					</c:if>
 					<span style="font-size: 18px">&nbsp;&nbsp;共${info.total }条记录，共${info.pages }页</span>
 				</ul>
 			</nav>
-		</div>
+		</div> 
        
        
        
@@ -223,12 +224,12 @@
         });
       }
     </script>
-    <script>var _hmt = _hmt || []; (function() {
+    <!-- <script>var _hmt = _hmt || []; (function() {
         var hm = document.createElement("script");
         hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
         var s = document.getElementsByTagName("script")[0];
         s.parentNode.insertBefore(hm, s);
-      })();</script>
+      })();</script> -->
   </body>
 
 </html>

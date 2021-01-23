@@ -7,8 +7,12 @@ import org.springframework.stereotype.Service;
 
 import com.cn.hrsystem.dao.DeptDao;
 import com.cn.hrsystem.domain.Dept;
-
+import com.cn.hrsystem.domain.Employee;
 import com.cn.hrsystem.service.DeptService;
+
+
+
+
 
 //业务逻辑层实现类
 @Service("deptService")
@@ -28,24 +32,15 @@ public class DeptServiceImpl implements DeptService{
 	@Override
 	public void addDept(Dept dept) {
 		
-//		//根据用户名查id，只显示名字就行，因为登录成功，所以表中用户名必定存在
-//		int userId = deptDao.findUserIdByName(dept.getUser().getUsername());
-//		dept.setUser_id(userId);
-//		//员工表同理,但员工使用户输入，所以可能不在表中
-//		int employeeId = deptDao.findemployeeIdByName(dept.getEmp().getEmpname());
-//		if(employeeId == 0) {
-//			
-//		}else {
-//			dept.setDeptManager(employeeId);
-//			deptDao.addDept(dept);
-//		}
-		
-		//根据用户名查id，只显示名字就行，因为登录成功，所以表中用户名必定存在
-		int userId = deptDao.findUserIdByName(dept.getUser().getUsername());
-		dept.setUser_id(userId);
 		deptDao.addDept(dept);
+	}
+	@Override
+	public void addDept1(Dept dept) {
+		deptDao.addDept1(dept);
 		
 	}
+
+	
 
 
 	//修改部门信息
@@ -53,6 +48,11 @@ public class DeptServiceImpl implements DeptService{
 	public void updateDept(Dept dept) {
 		deptDao.updateDept(dept);
 		
+	}
+	
+	@Override
+	public void updateDept1(Dept dept) {
+		deptDao.updateDept1(dept);
 	}
 
 
@@ -77,12 +77,31 @@ public class DeptServiceImpl implements DeptService{
 	}
 
 	
+
+	@Override
+	public List<Employee> findAllEmployee() {
+		List<Employee> list = deptDao.findAllEmployee();
+		return list;
+	}
+	
+	
+	
+	
+
 	//jungle要的查询部门id和名字
 	@Override
 	public List<Dept> findDeptIdAndName() {
 		List<Dept> list = deptDao.findDeptIdAndName();
 		return list;
 	}
+	@Override
+	public int findDeptCount() {
+		int count = deptDao.findDeptCount();
+		return count;
+	}
+
+	
+
 
 
 

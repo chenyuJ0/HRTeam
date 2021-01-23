@@ -34,13 +34,20 @@ public interface JobDao {
 	
 	
 	//添加职位
-	@Insert("insert into job(id,jobno,jobname,des) values(null,#{jobno},#{jobname},#{des})")
+	@Insert("insert into job(id,jobno,jobname,des,dept_id) values(null,#{jobno},#{jobname},#{des},#{dept_id})")
 	public void addJob(Job job);
+	//添加职位1
+	@Insert("insert into job(id,jobno,jobname,des,dept_id) values(null,#{jobno},#{jobname},#{des},null)")
+	public void addJob1(Job job);
 	
 	
 	//修改职位信息
-	@Update("update job set jobno=#{jobno},jobname=#{jobname},des=#{des} where id=#{id}")
-	public void update(Job job);
+	@Update("update job set jobno=#{jobno},jobname=#{jobname},des=#{des},dept_id=#{dept_id} where id=#{id}")
+	public void updateJob(Job job);
+	//修改职位信息1
+	@Update("update job set jobno=#{jobno},jobname=#{jobname},des=#{des},dept_id=null where id=#{id}")
+	public void updateJob1(Job job);
+	
 	
 	
 	//根据id删除职位
@@ -74,11 +81,15 @@ public interface JobDao {
 	
 	
 	
+	
+	
 	//jungle要的查询职位id和名字
 	@Select("select id,jobname from job")
 	public List<Job> findJobIdAndName();
 	
-	
+	//jungle要的查询所有职位数量
+	@Select("select count(*) from job")
+	public int findJobCount();
 	
 	
 	

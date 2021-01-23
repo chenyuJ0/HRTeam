@@ -32,13 +32,23 @@ public class JobServiceImpl implements JobService{
 		jobDao.addJob(job);
 		
 	}
+	@Override
+	public void addJob1(Job job) {
+		jobDao.addJob1(job);
+		
+	}
 
 
+	
 
 	@Override
 	public void updateJob(Job job) {
-		jobDao.update(job);
+		jobDao.updateJob(job);
 		
+	}
+	@Override
+	public void updateJob1(Job job) {
+		jobDao.updateJob1(job);
 	}
 
 
@@ -75,12 +85,27 @@ public class JobServiceImpl implements JobService{
 
 
 
+	
+	
+	//jungle要的查询职位id和名字
 	@Override
 	public List<Job> findJobIdAndName() {
 		List<Job> list = jobDao.findJobIdAndName();
 		return list;
 	}
+	//jungle要的查询所有职位数量
+	@Override
+	public int findJobCount() {
+		int count = jobDao.findJobCount();
+		return count;
+	}
 
+
+
+	
+
+
+	
 	
 	
 	

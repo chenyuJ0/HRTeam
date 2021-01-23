@@ -13,6 +13,7 @@
     <script src="js/html5.js"></script>
     <![endif]-->
 <script src="${pageContext.request.contextPath }/public/js/jquery.js"></script>
+<script type="text/javascript" src="${ctx}/public/js/xadmin.js"></script>
 <script
 	src="${pageContext.request.contextPath }/public/js/jquery.mCustomScrollbar.concat.min.js"></script>
 </head>
@@ -39,30 +40,36 @@
 			<c:if test="${emp.contract.contract_date ne null}">
 				<tr style="height: 50px">
 					<td style="text-align: right"><span class="item_name">上次签订日期：</span></td>
-					<td><fmt:formatDate value="${emp.contract.contract_date }" dateStyle="medium"/></td>
+					<td><fmt:formatDate value="${emp.contract.contract_date }"
+							dateStyle="medium" /></td>
 					<td></td>
 					<td></td>
 				</tr>
-				
+
 				<tr style="height: 50px">
 					<td style="text-align: right"><span class="item_name">上次合同开始日期：</span></td>
-					<td><fmt:formatDate value="${emp.contract.start_date }" dateStyle="medium"/></td>
+					<td><fmt:formatDate value="${emp.contract.start_date }"
+							dateStyle="medium" /></td>
 					<td style="text-align: right"><span class="item_name">上次合同结束日期：</span></td>
-					<td><fmt:formatDate value="${emp.contract.end_date }" dateStyle="medium"/></td>
+					<td><fmt:formatDate value="${emp.contract.end_date }"
+							dateStyle="medium" /></td>
 				</tr>
 			</c:if>
 
 			<tr style="height: 50px">
 				<td style="text-align: right"><span class="item_name">签订日期：</span></td>
-				<td><input type="date" class="textbox textbox_225" name="contract_date" value="contract_date"/></td>
+				<td><input type="date" class="textbox textbox_225"
+					name="contract_date" value="contract_date" /></td>
 				<td></td>
 				<td></td>
 			</tr>
 			<tr style="height: 50px">
 				<td style="text-align: right"><span class="item_name">本次合同开始日期：</span></td>
-				<td><input type="date" class="textbox textbox_225" name="start_date" value="start_date"/></td>
+				<td><input type="date" class="textbox textbox_225"
+					name="start_date" value="start_date" /></td>
 				<td style="text-align: right"><span class="item_name">本次合同结束日期：</span></td>
-				<td><input type="date" class="textbox textbox_225" name="end_date" value="end_date"/></td>
+				<td><input type="date" class="textbox textbox_225"
+					name="end_date" value="end_date" /></td>
 			</tr>
 
 			<tr>
@@ -74,11 +81,13 @@
 				<td></td>
 				<td colspan="3"><input type="submit" value="保存"
 					class="group_btn" /> &nbsp;&nbsp; <a
-					href="${pageContext.request.contextPath }/con/findAllCons"><input
-						type="button" value="返回" class="group_btn" /></a>
+					href="${pageContext.request.contextPath }/con/findAllCons"></a>
+					&nbsp;&nbsp;
+                	<input type="button" value="返回" onclick="javascript:window.location.replace(document.referrer;)" class="group_btn" />
+				<!-- <input type="button" value="返回" οnclick="javascript:window.location.replace(document.referrer);"/> -->
 			</tr>
-			
-			<input type="hidden" name="emp_id" value="${emp.id }"/>
+
+			<input type="hidden" name="emp_id" value="${emp.id }" />
 		</table>
 	</form>
 </body>

@@ -27,7 +27,7 @@ public interface ContractDao {
 	//查找已签订合同
 	public List<Employee> findAllCons(Employee emp);
 	
-	//根据id查找合同
+	//根据合同id查找合同
 	public Contract findContractById(Integer id);
 	
 	//查找合同预警
@@ -38,4 +38,8 @@ public interface ContractDao {
 	
 	//根据员工id查找员工和合同的信息
 	public Employee findEmpAndConByEmpId(Integer EmpID);
+	
+	//根据合同id查找员工和合同的信息
+	public Employee findEmpAndConByConId(Integer ConID);
+	
 }

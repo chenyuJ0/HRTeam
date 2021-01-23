@@ -17,18 +17,5 @@ public class EmployeeServiceImplTest {
 	public void test() {
 		fail("Not yet implemented");
 	}
-	
-
-	@Test
-	public void testfindAllDimission() {
-		//先创建Spring容器
-				ApplicationContext ac = new ClassPathXmlApplicationContext("classpath:applicationContext.xml");
-				EmployeeService employeeService = (EmployeeService)ac.getBean("employeeService");
-				List<Employee> list = employeeService.findAllDimission();
-				for(Employee e : list) {
-					System.out.println(e);
-				}
-				
-	}
 
 }

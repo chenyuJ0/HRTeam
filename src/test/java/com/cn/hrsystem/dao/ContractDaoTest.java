@@ -139,5 +139,21 @@ public class ContractDaoTest {
 		contractDao.deleteContractById(26);
 	}
 	
+	@Test
+	public void testFindEmpAndConByConId() {
+		Employee e = contractDao.findEmpAndConByConId(2);
+		System.out.println(e);
+	}
+	
+	//测试更新合同
+	@Test
+	public void testUpdateContract() {
+		Contract contract = new Contract();
+		contract.setId(1);
+		contract.setComment("yo wassup");
+		contractDao.updateContract(contract);
+	}
+	
+	
 	
 }

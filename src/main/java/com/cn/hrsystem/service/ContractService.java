@@ -37,6 +37,12 @@ public interface ContractService{
 	//根据id查找员工和合同的信息
 	public Employee findEmpAndConByEmpID(Integer EmpID);
 	
+	//根据id查找员工和合同的信息
+	public Employee findEmpAndConByConID(Integer ConID);
+	
 	//查找所有已签订合同的员工
 	public List<Employee> findAllCons(Employee emp);
+	
+	
+	
 }

@@ -5,12 +5,54 @@ import java.util.List;
 import com.cn.hrsystem.domain.Employee;
 
 public interface EmployeeService {
-	//æŸ¥æ‰¾æ‰€æœ‰ç¦»èŒä¿¡æ¯
-	public List<Employee> findAllDimission();
+	/**
+	 * ·ÖÒ³²éÑ¯ËùÓĞÔ±¹¤ĞÅÏ¢¡¢¸ù¾İÓÃ»§ÊäÈëÌõ¼şÄ£ºı²éÑ¯Ô±¹¤ĞÅÏ¢
+	 * 
+	 * @return
+	 */
+	public List<Employee> findEmpsByCondition(Employee employee);
+
+	/**
+	 * ¸ù¾İÔ±¹¤id²éÑ¯Ô±¹¤ĞÅÏ¢
+	 * 
+	 * @param id
+	 * @return
+	 */
+	public Employee findEmpById(int id);
+
+	/**
+	 * ĞŞ¸ÄÔ±¹¤ĞÅÏ¢
+	 * 
+	 * @param employee
+	 */
+	public void updateEmp(Employee employee);
+
+	/**
+	 * Ìí¼ÓÔ±¹¤
+	 * 
+	 * @param employee
+	 */
+	public void addEmp(Employee employee);
+
+	/**
+	 * Ô±¹¤×ªÕı
+	 * 
+	 * @param employee
+	 */
+	public void changeWorkMessage(Employee employee);
+
+	/**
+	 * Ô±¹¤ÀëÖ°
+	 * 
+	 * @param employee
+	 */
+	public void dimission(Employee employee);
 	
-	//æŸ¥æ‰¾è½¬æ­£ä¿¡æ¯
-	public List<Employee> findAllChanger();
-	
-	//æ ¹æ®idæŸ¥æ‰¾ç”¨æˆ·
-	//public List
+	/**
+	 * Ç°Ì¨É¾³ıÔ±¹¤Ê±£¬ĞŞ¸Ä¸ÃÔ±¹¤µÄdeletestatus
+	 * 
+	 * @param employee
+	 */
+	public void modifiedDeletestatus(Employee employee);
+
 }

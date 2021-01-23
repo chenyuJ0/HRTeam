@@ -4,13 +4,10 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 public class Dept implements Serializable{
 	private int id;//表的主键
 	private int deptno;//部门的部门编号
 	private String deptname;//部门的名称
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date create_date;//部门的创建日期
 	private String des;//部门的描述信息
 	private int deptManager;//部门的主管,外键引用emp表的主键

@@ -14,10 +14,16 @@ public interface JobService {
 	
 	//添加职位
 	public void addJob(Job job);
+	//添加职位1
+	public void addJob1(Job job);
+	
 	
 	
 	//修改职位信息
 	public void updateJob(Job job);
+	//修改职位信息1
+	public void updateJob1(Job job);
+	
 	
 	
 	//根据id删除职位
@@ -35,8 +41,14 @@ public interface JobService {
 	public List<Dept> findAllDept();
 	
 	
+	
+	
 	//jungle要的查询职位id和名字
 	public List<Job> findJobIdAndName();
+	
+	//jungle要的查询所有职位数量
+	public int findJobCount();
+	
 	
 	
 	

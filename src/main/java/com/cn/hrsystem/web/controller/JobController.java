@@ -33,7 +33,6 @@ public class JobController {
 		
 		List<Job> list = jobService.findAllJob();
 		
-		
 		model.addAttribute("list", list);
 		return "forward:/pages/job/list.jsp";
 	}
@@ -47,7 +46,7 @@ public class JobController {
 	 */
 	@RequestMapping("/findAll")
 	public String findAll(@RequestParam(value="pn",defaultValue="1")Integer pn,Model model) {
-		PageHelper.startPage(pn, 3);
+		PageHelper.startPage(pn, 5);
 		
 		List<Job> list = jobService.findAllJob();
 		
@@ -70,10 +69,31 @@ public class JobController {
 	 * @return
 	 */
 	@RequestMapping("/addJob")
-	public String addJob(Job job) {
+	public String addJob(String jobno,String jobname,String des,String dept_id) {
 		
-		jobService.addJob(job);
+		Job job = new Job();
 		
+		job.setDes(des);
+		job.setJobname(jobname);
+		
+		if(jobno != null && !("".equals(jobno))) {
+			int jobno1 = Integer.parseInt(jobno);
+			job.setJobno(jobno1);
+		}
+		if(dept_id != null && !("".equals(dept_id))) {
+			int dept_id1 = Integer.parseInt(dept_id);
+			job.setDept_id(dept_id1);;
+				if(dept_id1 == 0) {
+					jobService.addJob1(job);
+				}else {
+					jobService.addJob(job);
+				}
+			
+			
+		}
+		
+		
+		//jobService.addJob(job);
 		return "redirect:/pages/job/add.jsp";
 	}
 	
@@ -82,9 +102,36 @@ public class JobController {
 	 * @param job
 	 * @return
 	 */
-	@RequestMapping("updateJob")
-	public String updateJob(Job job) {
-		jobService.updateJob(job);
+	@RequestMapping("/updateJob")
+	public String updateJob(String id,String jobno,String jobname,String des,String dept_id, Model model) {
+		
+		
+		System.out.println(dept_id);
+		Job job = new Job();
+		if(id != null && !("".equals(id))) {
+			int id1 = Integer.parseInt(id);
+			job.setId(id1);
+		}
+		
+		int jobno1 = Integer.parseInt(jobno);
+		job.setJobno(jobno1);
+		job.setJobname(jobname);
+		job.setDes(des);
+		
+		if(dept_id != null && !("".equals(dept_id))) {
+			int dept_id1 = Integer.parseInt(dept_id);
+			job.setDept_id(dept_id1);
+			
+				if(dept_id1 == 0) {
+					jobService.updateJob1(job);
+				}else {
+					jobService.updateJob(job);
+				}
+			
+		}
+		
+		
+		System.out.println(job);
 		
 		return "redirect:/job/findAll";
 	}
@@ -103,16 +150,17 @@ public class JobController {
 	
 	
 	
-//	/**
-//	 * 跳转到job下的add.jsp页面
-//	 * @return
-//	 */
-//	@RequestMapping("/add")
-//	public String returnadd() {
-//		
-//		return "forward:/pages/job/add.jsp";
-//	}
-//	
+	/**
+	 * 跳转到job下的add.jsp页面
+	 * @return
+	 */
+	@RequestMapping("/add")
+	public String returnadd(Model model) {
+		List<Dept> list = jobService.findAllDept();
+		model.addAttribute("list", list);
+		return "forward:/pages/job/add.jsp";
+	}
+	
 	
 	/**
 	 * 根据id查找部门信息回显给update页面
@@ -122,39 +170,15 @@ public class JobController {
 	public String returnUpdate(String id,Model model) {
 		int byId = Integer.parseInt(id);
 		
+		List<Dept> list = jobService.findAllDept();
+		model.addAttribute("list", list);
+		
 		Job job = jobService.findJobById(byId);
 		model.addAttribute("job",job);
 		return "forward:/pages/job/update.jsp";
 	}
 
 	
-	
-	
-//	/**
-//	 * 模糊查询
-//	 * @param pn
-//	 * @param job
-//	 * @param model
-//	 * @return
-//	 */
-//	@RequestMapping("/moHuSearch")
-//	public String moHuSearch(@RequestParam(value="pn",defaultValue="1")Integer pn,Job job,Model model) {
-//		
-//		PageHelper.startPage(pn, 3);
-//		
-//		System.out.println(job);
-//		List<Job> list = jobService.moHuSearch(job);
-//		
-//		System.out.println(list);
-//		
-//		
-//		//对模糊查询的结果进行分页
-//		PageInfo<Job> info = new PageInfo<Job>(list);
-//		model.addAttribute("info", info);
-//		
-//		return "forward:/pages/job/list.jsp";
-//	}
-//	
 	
 	
 	/**
@@ -167,10 +191,9 @@ public class JobController {
 	@RequestMapping("/moHuSearch")
 	public String moHuSearch(@RequestParam(value="pn",defaultValue="1")Integer pn,String des,String dept_id,String jobname, Model model) {
 		
-		PageHelper.startPage(pn, 3);
+		PageHelper.startPage(pn, 5);
 		Job job = new Job();
 		
-		System.out.println(dept_id);
 		if(dept_id != null && !("".equals(dept_id))) {
 			int dept_id1 = Integer.parseInt(dept_id);
 			job.setDept_id(dept_id1);
@@ -178,9 +201,13 @@ public class JobController {
 		
 		job.setDes(des);
 		job.setJobname(jobname);
+
+		//用于回显
+		model.addAttribute("job1", job);
 		
 		System.out.println(job);
 		List<Job> list = jobService.moHuSearch(job);
+		
 		
 		//对模糊查询的结果进行分页
 		PageInfo<Job> info = new PageInfo<Job>(list);

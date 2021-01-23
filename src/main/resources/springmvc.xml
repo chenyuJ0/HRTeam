@@ -28,7 +28,11 @@
         <mvc:resources location="/public/lib/layui/" mapping="/public/lib/layui/**"></mvc:resources>
         <mvc:resources location="/public/fonts/" mapping="/public/fonts/**"></mvc:resources>
         
-        
+         <!-- 配置文件上传解析器 -->
+        <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        	<property name="maxUploadSize" value="#{1024*1024*20}"></property>
+        	<property name="defaultEncoding" value="utf-8"></property>
+        </bean>
      
      	<!-- 开启springmvc框架对注解的支持 -->
      	<mvc:annotation-driven></mvc:annotation-driven>

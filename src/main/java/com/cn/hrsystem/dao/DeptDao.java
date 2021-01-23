@@ -26,12 +26,20 @@ public interface DeptDao {
 //		
 		
 		//添加部门
-		@Insert("insert into dept(id,deptno,deptname,create_date,des,user_id) values(null,#{deptno},#{deptname},#{create_date},#{des},#{user_id})")
+		@Insert("insert into dept(id,deptno,deptname,create_date,des,deptManager,user_id) values(null,#{deptno},#{deptname},#{create_date},#{des},#{deptManager},#{user_id})")
 		public void addDept(Dept dept);
+		//添加部门
+		@Insert("insert into dept(id,deptno,deptname,create_date,des,deptManager,user_id) values(null,#{deptno},#{deptname},#{create_date},#{des},null,#{user_id})")
+		public void addDept1(Dept dept);
+		
+		
 		
 		//修改部门信息
-		@Update("update dept set deptno=#{deptno},deptname=#{deptname},create_date=#{create_date},des=#{des} where id=#{id}")
+		@Update("update dept set deptno=#{deptno},deptname=#{deptname},create_date=#{create_date},des=#{des},deptManager=#{deptManager} where id=#{id}")
 		public void updateDept(Dept dept);
+		//修改部门信息1
+		@Update("update dept set deptno=#{deptno},deptname=#{deptname},create_date=#{create_date},des=#{des},deptManager=null where id=#{id}")
+		public void updateDept1(Dept dept);
 		
 		
 		//删除部门信息
@@ -94,10 +102,22 @@ public interface DeptDao {
 		public List<Dept> moHuSearch(Dept dept);
 		
 		
+		
+		//查询所有员工的信息
+		@Select("select * from employee")
+		public List<Employee> findAllEmployee();
+		
+		
+		
+		
+		
 		//jungle要的查询部门id和名字
 		@Select("select id,deptname from dept")
 		public List<Dept> findDeptIdAndName();
 		
+		//jungle要的查询部门数量的信息
+		@Select("select count(*) from dept")
+		public int findDeptCount();
 		
 		
 		

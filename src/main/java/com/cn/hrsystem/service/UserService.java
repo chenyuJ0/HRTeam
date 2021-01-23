@@ -1,5 +1,8 @@
 package com.cn.hrsystem.service;
 
-public interface UserService {
+import com.cn.hrsystem.domain.User;
 
+public interface UserService {
+	// ÓÃ»§µÇÂ¼
+	public User login(User user);
 }

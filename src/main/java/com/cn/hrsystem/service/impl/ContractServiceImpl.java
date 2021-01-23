@@ -19,6 +19,7 @@ public class ContractServiceImpl implements ContractService{
 		this.contractDao = contractDao;
 	}
 
+	//合同预警
 	@Override
 	public List<Contract> findContractWarnning(Employee emp) {
 		List<Contract> list = contractDao.findContractWarning(emp);
@@ -47,8 +48,17 @@ public class ContractServiceImpl implements ContractService{
 		}
 	}
 
+	//更新合同信息
 	@Override
 	public void editContract(Contract contract) {
+		int id = contract.getId();
+		System.out.println(id);
+		Contract c = contractDao.findContractById(id);
+		System.out.println("来这儿没");
+		if(c != null) {
+			System.out.println("来没有");
+			contractDao.updateContract(contract);
+		}
 		// TODO Auto-generated method stub
 		
 	}
@@ -95,6 +105,13 @@ public class ContractServiceImpl implements ContractService{
 	public Employee findEmpAndConByEmpID(Integer EmpID) {
 		Employee employee = contractDao.findEmpAndConByEmpId(EmpID);
 		return employee;
+	}
+
+	
+	@Override
+	public Employee findEmpAndConByConID(Integer ConID) {
+		Employee e = contractDao.findEmpAndConByConId(ConID);
+		return e;
 	}
 
 

@@ -33,6 +33,7 @@
 			<result property="name" column="name" />
 		</association>
 		<association property="contract" javaType="com.cn.hrsystem.domain.Contract">
+			<id property="id" column="cid"/> 
 			<result property="contract_date" column="contract_date"/>
 			<result property="start_date" column="start_date"/>
 			<result property="end_date" column="end_date"/>
@@ -136,6 +137,7 @@
 		</association>
 		<collection property="contracts"
 			ofType="com.cn.hrsystem.domain.Contract">
+			<id property="id" column="cid"/>
 			<result property="contract_date" column="contract_date" />
 			<result property="start_date" column="start_date" />
 			<result property="end_date" column="end_date" />
@@ -146,7 +148,7 @@
 	<!-- 查找合同信息 -->
 	<select id="findAllCons"
 		resultType="com.cn.hrsystem.domain.Employee" resultMap="findCon">
-		SELECT e.id,e.jobnum,e.empname,d.deptname,j.jobname,e.`work_status`,c.contract_date,c.start_date,c.end_date,c.comment
+		SELECT e.id,e.jobnum,e.empname,d.deptname,j.jobname,e.`work_status`,c.contract_date,c.start_date,c.end_date,c.comment,c.id cid
 		FROM contract c
 		LEFT JOIN employee e
 		ON c.emp_id = e.id
@@ -167,13 +169,13 @@
 	</select>
 
 	<!-- 根据id查找合同 -->
-	<select id="findContractById">
-		select
+	<select id="findContractById" resultType="com.cn.hrsystem.domain.Contract">
+		select * from contract where id=#{id}
 	</select>
 
 
 	<!-- 根据id删除合同 -->
-	<delete id="deleteContract">
+	<delete id="deleteContractById">
 		delete from contract where id=#{id}
 	</delete>
 
@@ -214,7 +216,7 @@
 		LEFT JOIN job j
 		ON e.job_id=j.id
 		<where>
-			(e.deletestatus != 1 OR e.deletestatus IS NULL) AND (c.end_date - NOW() &lt; 30 AND c.end_date - NOW() &rt; 0)
+			(e.deletestatus != 1 OR e.deletestatus IS NULL) AND (c.end_date - NOW() &lt; 30)
 			<if test="empname != null and empname !='' ">
 				and e.empname like concat('%',#{empname},'%')
 			</if>
@@ -268,5 +270,42 @@
 	<insert id="addContract" parameterType="com.cn.hrsystem.domain.Contract" >
 		insert into contract values(null,#{contract_date},#{start_date},#{end_date},#{comment},#{emp_id})
 	</insert>
+	
+	<select id="findEmpAndConByConId" resultType="com.cn.hrsystem.domain.Employee" resultMap="find">
+		SELECT e.id,e.jobnum,e.empname,d.deptname,j.jobname,c.contract_date,c.start_date,c.end_date,c.comment,c.id cid
+		FROM contract c
+		INNER JOIN employee e
+		ON c.emp_id = e.id
+		LEFT JOIN dept d
+		ON e.dept_id=d.id
+		LEFT JOIN job j
+		ON e.job_id=j.id
+		WHERE c.id = #{id}
+	</select>
+	
+	<!-- 更新合同 -->
+	<update id="updateContract" parameterType="com.cn.hrsystem.domain.Contract">
+		update contract
+		<set>
+			<if test="id > 0">
+				id = #{id}
+			</if>
+			<if test="contract_date != null">
+				contract_date = #{contract_date}
+			</if>
+			<if test="start_date != null">
+				start_date = #{start_date}
+			</if>
+			<if test="end_date != null">
+				end_date = #{end_date}
+			</if>
+			<if test="comment != null and comment != '' ">
+				comment = #{comment}
+			</if>
+		</set>
+		<where>
+			id=#{id}
+		</where>
+	</update>
 	
 </mapper>
