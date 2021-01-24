@@ -22,4 +22,11 @@ public interface UserDao {
 	 */
 	@Select("select * from user where id=#{id }")
 	public User findUserById(int id);
+	
+	/**
+	 * 查询所有用户
+	 * @return
+	 */
+	@Select("select count(id) from user")
+	public int findAllUsers();
 }

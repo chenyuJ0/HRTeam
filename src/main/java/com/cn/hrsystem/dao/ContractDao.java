@@ -42,4 +42,7 @@ public interface ContractDao {
 	//根据合同id查找员工和合同的信息
 	public Employee findEmpAndConByConId(Integer ConID);
 	
+	//查找合同总数
+	public int findContractCounts();
+	
 }

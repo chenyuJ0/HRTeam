@@ -15,7 +15,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	private EmployeeDao employeeDao;
 
 	/**
-	 * ·ÖÒ³²éÑ¯ËùÓÐÔ±¹¤ÐÅÏ¢¡¢¸ù¾ÝÓÃ»§ÊäÈëÌõ¼þÄ£ºý²éÑ¯Ô±¹¤ÐÅÏ¢
+	 * ï¿½ï¿½Ò³ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½ï¿½ï¿½Ñ¯Ô±ï¿½ï¿½ï¿½ï¿½Ï¢
 	 */
 	@Override
 	public List<Employee> findEmpsByCondition(Employee employee) {
@@ -23,7 +23,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	/**
-	 * ¸ù¾ÝÔ±¹¤id²éÑ¯Ô±¹¤ÐÅÏ¢
+	 * ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½idï¿½ï¿½Ñ¯Ô±ï¿½ï¿½ï¿½ï¿½Ï¢
 	 */
 	@Override
 	public Employee findEmpById(int id) {
@@ -31,7 +31,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	/**
-	 * ÐÞ¸ÄÔ±¹¤ÐÅÏ¢
+	 * ï¿½Þ¸ï¿½Ô±ï¿½ï¿½ï¿½ï¿½Ï¢
 	 */
 	@Override
 	public void updateEmp(Employee employee) {
@@ -39,15 +39,15 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	/**
-	 * Ìí¼ÓÔ±¹¤
+	 * ï¿½ï¿½ï¿½Ô±ï¿½ï¿½
 	 */
 	@Override
 	public void addEmp(Employee employee) {
-		// 1¡¢´ÓÊý¾Ý¿âÖÐ²éÑ¯³öÏÖÓÐÔ±¹¤¼ÇÂ¼ÖÐ×î´óµÄÔ±¹¤±àºÅ
+		// 1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½Ð²ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ï¿½ï¿½
 		String maxJobnum = employeeDao.findMaxJobnum();
-		// 2¡¢½«´ËÔ±¹¤±àºÅÓÐÐ§Êý×Ö²¿·ÖÈ¡³ö
+		// 2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½ï¿½Ö²ï¿½ï¿½ï¿½È¡ï¿½ï¿½
 		Integer num = Integer.valueOf(maxJobnum);
-		// 3¡¢ÔÚµ±Ç°²é³öµÄ×î´óÔ±¹¤±àºÅ»ù´¡ÉÏ¼Ó1£¬À´Éú³ÉÏÂÒ»¸ö±àºÅ
+		// 3ï¿½ï¿½ï¿½Úµï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ï¿½Å»ï¿½ï¿½ï¿½ï¿½Ï¼ï¿½1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½
 		String jobnum = String.format("%05d", num+1);
 		employee.setJobnum(jobnum);
 		
@@ -55,7 +55,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	/**
-	 * Ô±¹¤×ªÕý
+	 * Ô±ï¿½ï¿½×ªï¿½ï¿½
 	 */
 	@Override
 	public void changeWorkMessage(Employee employee) {
@@ -63,7 +63,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	/**
-	 * Ô±¹¤ÀëÖ°
+	 * Ô±ï¿½ï¿½ï¿½ï¿½Ö°
 	 */
 	@Override
 	public void dimission(Employee employee) {
@@ -71,11 +71,17 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	/**
-	 * Ç°Ì¨É¾³ýÔ±¹¤Ê±£¬ÐÞ¸Ä¸ÃÔ±¹¤µÄdeletestatus
+	 * Ç°Ì¨É¾ï¿½ï¿½Ô±ï¿½ï¿½Ê±ï¿½ï¿½ï¿½Þ¸Ä¸ï¿½Ô±ï¿½ï¿½ï¿½ï¿½deletestatus
 	 */
 	@Override
 	public void modifiedDeletestatus(Employee employee) {
 		employeeDao.modifiedDeletestatus(employee);
+	}
+
+	@Override
+	public int findEmpCounts() {
+		int emps = employeeDao.findEmpCounts();
+		return emps;
 	}
 
 }

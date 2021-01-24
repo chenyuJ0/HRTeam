@@ -31,11 +31,11 @@
         
         <ul class="layui-nav right" lay-filter="">
           <li class="layui-nav-item">
-            <a href="javascript:;">admin</a>
+            <a href="javascript:;">${user.name }</a>
             <dl class="layui-nav-child"> <!-- 二级菜单 -->
-              <dd><a onclick="x_admin_show('个人信息','http://www.baidu.com')">个人信息</a></dd>
-              <dd><a onclick="x_admin_show('切换帐号','http://www.baidu.com')">切换帐号</a></dd>
-              <dd><a href="./login.html">退出</a></dd>
+              <dd><a onclick="x_admin_show('个人信息',${ctx}/pages/user/usermsg.jsp')">个人信息</a></dd>
+              <!-- <dd><a onclick="x_admin_show('切换帐号','http://www.baidu.com')">切换帐号</a></dd> -->
+              <dd><a href="${ctx }/user/loginOut">退出</a></dd>
             </dl>
           </li>
           <li class="layui-nav-item to-index"><a>欢迎登录</a></li>
@@ -57,13 +57,13 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a href="${ctx }/pages/employee/add.jsp">
+                        <a _href="${ctx }/pages/employee/add.jsp">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>员工入职</cite>
                         </a>
                     </li >
                     <li>
-                        <a href="${ctx }/emp/findAllEmps">
+                        <a _href="${ctx }/emp/findAllEmps">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>员工信息</cite>
                         </a>
@@ -79,13 +79,13 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="con/findChange">
+                        <a _href="${ctx }/con/findChange">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>转正信息查询</cite>
                         </a>
                     </li >
                     <li>
-                        <a _href="con/findDis">
+                        <a _href="${ctx }/con/findDis">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>离职信息查询</cite>
                         </a>
@@ -101,19 +101,19 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="con/findUsC">
+                        <a _href="${ctx }/con/findUsC">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>未签订合同</cite>
                         </a>
                     </li >
                     <li>
-                        <a _href="con/findCW">
+                        <a _href="${ctx }/con/findCW">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>合同预警</cite>
                         </a>
                     </li>
                     <li>
-                        <a _href="con/findAllCons">
+                        <a _href="${ctx }/con/findAllCons">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>已签订合同</cite>
                         </a>

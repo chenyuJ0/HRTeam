@@ -83,12 +83,17 @@
 					class="group_btn" /> &nbsp;&nbsp; <a
 					href="${pageContext.request.contextPath }/con/findAllCons"></a>
 					&nbsp;&nbsp;
-                	<input type="button" value="返回" onclick="javascript:window.location.replace(document.referrer;)" class="group_btn" />
-				<!-- <input type="button" value="返回" οnclick="javascript:window.location.replace(document.referrer);"/> -->
+                	<input type="button" value="返回" class="group_btn" id="return"/>
 			</tr>
 
 			<input type="hidden" name="emp_id" value="${emp.id }" />
 		</table>
+		<script type="text/javascript">
+		document.getElementById("return").onclick=function(){
+			// window.location.href="${pageContext.request.contextPath}/findAllServlet";返回上一级（但是相当于前进）
+			history.back();// 真正的返回历史记录的上一级
+		}
+	</script>
 	</form>
 </body>
 </html>

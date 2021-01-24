@@ -35,10 +35,19 @@ public class UserController {
 			session.setAttribute("user", u);
 			return "forward:/index.jsp";
 		}
+
+		// ç»™å‡ºé”™è¯¯æç¤ºä¿¡æ¯
+		req.setAttribute("login_msg", "ç”¨æˆ·åæˆ–å¯†ç é”™è¯¯ï¼");
 		
-		// ¸ø³ö´íÎóÌáÊ¾ĞÅÏ¢
-		req.setAttribute("login_msg", "ÓÃ»§Ãû»òÃÜÂë´íÎó£¡");
-		
+		return "forward:/login.jsp";
+	}
+	
+	//é€€å‡º
+	@RequestMapping("/loginOut")
+	public String loginOut(HttpServletRequest req) {
+		HttpSession session = req.getSession();
+		session.removeAttribute("user");
+		session.removeAttribute("login_msg");
 		return "forward:/login.jsp";
 	}
 	

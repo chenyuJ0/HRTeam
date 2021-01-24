@@ -21,6 +21,12 @@ public interface EmployeeService {
 	public Employee findEmpById(int id);
 
 	/**
+	 * 查询员工人数
+	 * @return
+	 */
+	public int findEmpCounts();
+	
+	/**
 	 * 修改员工信息
 	 * 
 	 * @param employee

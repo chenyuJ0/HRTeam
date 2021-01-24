@@ -43,6 +43,8 @@ public interface ContractService{
 	//查找所有已签订合同的员工
 	public List<Employee> findAllCons(Employee emp);
 	
+	//查找所有合同数量
+	public int findContractCounts();
 	
 	
 }

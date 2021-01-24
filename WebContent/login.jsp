@@ -52,7 +52,7 @@
 				<input type="submit" value="立即登陆" class="submit_btn" />
 			</dd>
 			<dd>
-				<p>© 2015-2016 Azurelee 版权所有</p>
+				<p>© 2020-2021  版权没有</p>
 			</dd>
 			<!-- 出错显示的信息框 -->
 			<div role="alert" align="center" style="color:red">

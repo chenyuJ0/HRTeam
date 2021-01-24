@@ -308,4 +308,9 @@
 		</where>
 	</update>
 	
+	<!-- 查找所有合同 -->
+	<select id="findContractCounts" resultType="int">
+		select count(*) from contract;
+	</select>
+	
 </mapper>

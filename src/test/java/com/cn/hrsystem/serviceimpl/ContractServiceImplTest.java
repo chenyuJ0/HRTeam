@@ -79,7 +79,13 @@ public class ContractServiceImplTest {
 	
 	
 	
-	
+	@Test
+	public void testFindContractCounts() {
+		ApplicationContext ac = new ClassPathXmlApplicationContext("classpath:applicationContext.xml");
+		ContractService contractService = (ContractService)ac.getBean("contractService");
+		int counts = contractService.findContractCounts();
+		System.out.println(counts);
+	}
 	
 	
 	

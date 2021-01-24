@@ -169,5 +169,15 @@ public class NoticeController {
 		return "forward:/pages/notice/readNotice.jsp";
 		
 	}
-
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

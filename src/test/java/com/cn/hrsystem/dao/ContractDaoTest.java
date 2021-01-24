@@ -154,6 +154,11 @@ public class ContractDaoTest {
 		contractDao.updateContract(contract);
 	}
 	
+	@Test
+	public void testFindContractCounts() {
+		int counts = contractDao.findContractCounts();
+		System.out.println(counts);
+	}
 	
 	
 }

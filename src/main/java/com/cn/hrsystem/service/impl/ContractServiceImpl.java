@@ -54,9 +54,7 @@ public class ContractServiceImpl implements ContractService{
 		int id = contract.getId();
 		System.out.println(id);
 		Contract c = contractDao.findContractById(id);
-		System.out.println("来这儿没");
 		if(c != null) {
-			System.out.println("来没有");
 			contractDao.updateContract(contract);
 		}
 		// TODO Auto-generated method stub
@@ -66,8 +64,7 @@ public class ContractServiceImpl implements ContractService{
 	//添加合同
 	@Override
 	public void addContract(Contract contract) {
-		contractDao.addContract(contract);
-		
+		contractDao.addContract(contract);	
 	}
 
 	//根据id查找合同
@@ -112,6 +109,12 @@ public class ContractServiceImpl implements ContractService{
 	public Employee findEmpAndConByConID(Integer ConID) {
 		Employee e = contractDao.findEmpAndConByConId(ConID);
 		return e;
+	}
+
+	@Override
+	public int findContractCounts() {
+		int contracts = contractDao.findContractCounts();
+		return contracts;
 	}
 
 

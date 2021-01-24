@@ -102,17 +102,18 @@
 	                <input type="submit" value="保存" class="group_btn" onsubmit="return checkDisable();" />
 	                &nbsp;&nbsp;
 	                <input type="reset" value="重置" class="group_btn" />
-	                &nbsp;&nbsp;
-	                <input type="button" value="返回" class="group_btn" id="return"/>
+	                <!-- &nbsp;&nbsp;
+	                <input type="button" value="返回" class="group_btn" id="return"/> -->
 	        </tr>
 	    </table>
     </form>
     
     <script type="text/javascript">
-		document.getElementById("return").onclick=function(){
+		/* document.getElementById("return").onclick=function(){
 			// window.location.href="${pageContext.request.contextPath}/findAllServlet";返回上一级（但是相当于前进）
 			history.back();// 真正的返回历史记录的上一级
-		}
+			
+		} */
 		
 		document.getElementById("idcard").onblur=function(){
 			var value = this.value.trim();

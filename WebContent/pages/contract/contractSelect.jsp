@@ -91,12 +91,14 @@
 
 					<c:forEach items="${emp.contracts }" var="con">
 						<tr>
-							<td><a
-								href="${pageContext.request.contextPath }/con/signCon?id=${emp.id}">签订合同</a>
-								<a
-								href="${pageContext.request.contextPath }/con/editCon?id=${con.id}">编辑</a>
-								<a
-								href="${pageContext.request.contextPath }/con/deleteCon?id=${con.id}">删除</a></td>
+							<td><a title="签订合同"
+								href="${pageContext.request.contextPath }/con/signCon?id=${emp.id}"><i class="layui-icon">&#xe611;</i></a>
+								<a title="编辑"
+								href="${pageContext.request.contextPath }/con/editCon?id=${con.id}"><i class="layui-icon">&#xe642;</i></a>
+
+								<a title="删除" onclick="member_del(this,'${con.id}')"
+								href="javascript:;"> <i class="layui-icon">&#xe640;</i>
+							</a></td>
 							<td>${emp.jobnum }</td>
 							<td>${emp.empname }</td>
 							<td>${emp.dept.deptname }</td>
@@ -160,5 +162,34 @@
 				</ul>
 			</nav>
 		</div>
+		<script>
+			layui.use('laydate', function() {
+				var laydate = layui.laydate;
+
+				//执行一个laydate实例
+				laydate.render({
+					elem : '#start' //指定元素
+				});
+
+				//执行一个laydate实例
+				laydate.render({
+					elem : '#end' //指定元素
+				});
+			});
+
+			/*合同-删除*/
+			function member_del(obj, id) {
+				layer.confirm('确认要删除吗？', function(index) {
+					//发异步删除数据
+					//等以后再使用异步，这里先使用
+					$.get("${ctx }/con/deleteCon?id=" + id);
+					$(obj).parents("tr").remove();
+					layer.msg('已删除!', {
+						icon : 1,
+						time : 1000
+					});
+				});
+			}
+		</script>
 </body>
 </html>

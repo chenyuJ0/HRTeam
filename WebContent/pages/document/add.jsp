@@ -72,14 +72,9 @@
               <label for="sub" class="layui-form-label">
               </label>
               <input type="submit" id="sub" value=" 提交" class="layui-btn" lay-filter="add" lay-submit=""/>
-                
-                
+ 
           </div>
-            <div class="layui-form-item">
-                <a href="${ctx}/doc/showAll">
-                    <cite>返回</cite>
-                </a>
-            </div>
+           
       </form>
     </div>
     <script>

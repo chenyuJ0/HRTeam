@@ -32,9 +32,7 @@ public class DocumentController {
 
     @Autowired
     private DocumentService documentService;
-	/*
-	 * @Autowired private UserService userService;
-	 */
+
 
     @RequestMapping("/showAll")
     public String findDim(@RequestParam(value="pn",defaultValue="1")Integer pn, Model model,Document document) {
@@ -56,9 +54,6 @@ public class DocumentController {
     //post方式提交
     @RequestMapping(value = "/add",method = {RequestMethod.POST})
     public String submitDoc(@RequestParam("file") MultipartFile file,Document document){
-    	
-
-        System.out.println(file.getOriginalFilename());
 
         if (file != null) {
             // 取得当前上传文件的文件名称
@@ -81,7 +76,6 @@ public class DocumentController {
             //ystem.out.println(filename2);
             // 如果名称不为“”,说明该文件存在，否则说明该文件不存在
             try {
-                System.out.println(document);
             	documentService.addDocument(document);
     			file.transferTo(new File(document.getRemark()));
     		} catch (IllegalStateException | IOException e) {
@@ -89,9 +83,8 @@ public class DocumentController {
     		}
         }
 
-        System.out.println(document.toString());
 
-        return "redirect:/doc/showAll";
+        return "forward:/pages/document/add.jsp";
     }
 
 
@@ -110,11 +103,7 @@ public class DocumentController {
     // 修改息处理
     @RequestMapping(value = "/edit", method = {RequestMethod.POST})
     public String edit(Document document,HttpServletRequest request) throws Exception {
-    	System.out.println("???");
     	request.setCharacterEncoding("utf-8");
-    	System.out.println(request.getCharacterEncoding());
-    	
-    	System.out.println(document.getDescription());
     	documentService.updateDocument(document);
         //重定向
         return "redirect:/doc/showAll";
@@ -144,7 +133,7 @@ public class DocumentController {
 				is.close();
 				//将要下载的文件流返回
 				HttpHeaders httpHeaders = new HttpHeaders();
-				httpHeaders.set("Content-Disposition", "attachment;filename="+document.getFilename());
+				httpHeaders.set("Content-Disposition", "attachment;filename="+new String(document.getFilename().getBytes("utf-8"),"iso-8859-1"));
 				return new ResponseEntity<byte[]>(tmp,httpHeaders,HttpStatus.OK);
 			} catch (IOException e1) {
 				request.setAttribute("msg", "文件下载异常");

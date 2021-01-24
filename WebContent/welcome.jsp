@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
     <c:set var="ctx" value="${pageContext.request.contextPath}"/>
 <!doctype html>
 <html lang="en">
@@ -17,7 +18,7 @@
     <body>
     <div class="x-body layui-anim layui-anim-up">
         <blockquote class="layui-elem-quote">欢迎管理员：
-            <span class="x-red">${user.name }</span>！当前时间:2018-04-25 20:50:53</blockquote>
+            <span class="x-red">${user.name }</span></blockquote>
         <fieldset class="layui-elem-field">
             <legend>数据统计</legend>
             <div class="layui-field-box">
@@ -31,49 +32,42 @@
                                             <a href="javascript:;" class="x-admin-backlog-body">
                                                 <h3>系统用户数</h3>
                                                 <p>
-                                                    <cite>66</cite></p>
+                                                    <cite>${users }</cite></p>
                                             </a>
                                         </li>
                                         <li class="layui-col-xs2">
                                             <a href="javascript:;" class="x-admin-backlog-body">
                                                 <h3>员工数</h3>
                                                 <p>
-                                                    <cite>12</cite></p>
+                                                    <cite>${emps }</cite></p>
                                             </a>
                                         </li>
                                         <li class="layui-col-xs2">
                                             <a href="javascript:;" class="x-admin-backlog-body">
                                                 <h3>合同数</h3>
                                                 <p>
-                                                    <cite>99</cite></p>
-                                            </a>
-                                        </li>
-                                        <li class="layui-col-xs2">
-                                            <a href="javascript:;" class="x-admin-backlog-body">
-                                                <h3>公告数</h3>
-                                                <p>
-                                                    <cite>67</cite></p>
+                                                    <cite>${contracts }</cite></p>
                                             </a>
                                         </li>
                                         <li class="layui-col-xs2">
                                             <a href="javascript:;" class="x-admin-backlog-body">
                                                 <h3>部门数</h3>
                                                 <p>
-                                                    <cite>67</cite></p>
+                                                    <cite>${depts }</cite></p>
                                             </a>
                                         </li>
                                         <li class="layui-col-xs2">
                                             <a href="javascript:;" class="x-admin-backlog-body">
                                                 <h3>职位数</h3>
                                                 <p>
-                                                    <cite>6766</cite></p>
+                                                    <cite>${jobs }</cite></p>
                                             </a>
                                         </li>
                                         <li class="layui-col-xs2">
                                             <a href="javascript:;" class="x-admin-backlog-body">
                                                 <h3>文件数</h3>
                                                 <p>
-                                                    <cite>6766</cite></p>
+                                                    <cite>${documents }</cite></p>
                                             </a>
                                         </li>
                                     </ul>
@@ -91,12 +85,12 @@
                     <tbody>
                         <tr>
                             <td >
-                                <a class="x-a" href="/" target="_blank">新版x-admin 2.0上线了</a>
+                                公告标题：<a class="x-a"  target="_blank">${readNoticeByState.title }</a>
                             </td>
                         </tr>
                         <tr>
                             <td >
-                                <a class="x-a" href="/" target="_blank">交流qq群:(519492808)</a>
+                                公告内容：<a class="x-a"  target="_blank"><c:if test="${readNoticeByState.context eq null }">暂无公告</c:if> ${readNoticeByState.context }</a>
                             </td>
                         </tr>
                     </tbody>

@@ -53,11 +53,16 @@
 			<tr style="height: 50px">
 				<td></td>
 				<td colspan="3"><input type="submit" value="保存"
-					class="group_btn" /> &nbsp;&nbsp; <input type="button" value="返回"
-					class="group_btn" />
+					class="group_btn" /> &nbsp;&nbsp; <input type="button" value="返回" class="group_btn" id="return"/>
 			</tr>
 			<input type="hidden" name="id" value="${emp.contract.id }"/>
 		</table>
+		<script type="text/javascript">
+		document.getElementById("return").onclick=function(){
+			// window.location.href="${pageContext.request.contextPath}/findAllServlet";返回上一级（但是相当于前进）
+			history.back();// 真正的返回历史记录的上一级
+		}
+	</script>
 	</form>
 </body>
 </html>
